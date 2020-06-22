@@ -1,13 +1,30 @@
-AFRAME.registerComponent('markerhandler', {
-       init: function () {
-           this.el.sceneEl.addEventListener('markerFound', () => {
-               console.log('marker found!');
-               document.getElementById('tabla').innerHTML='Juan Correcto';
-           });
+AFRAME.registerComponent('markercorrecto', {
+    init: function () {
+        this.el.addEventListener('markerFound', () => {
+            console.log('marker correcto found!');
+            document.getElementById('tabla').innerHTML='Juan Correcto';
+        });
 
-       },
-   });
+    },
+});
 
-   
-   
+AFRAME.registerComponent('markerincorrecto', {
+    init: function () {
+        this.el.addEventListener('markerFound', () => {
+            console.log('marker incorrecto found!');
+            document.getElementById('tabla').innerHTML=
+                'Juan: <b>incorrecto</b>';
+        });
 
+    },
+});
+
+function cambiar(){
+    var el = document.querySelector('#entidad');
+    el.setAttribute(
+        "obj-model",
+        'obj:url(modelos/hornero.obj);mtl:url(modelos/hornero.mtl)'
+    );
+    el.setAttribute("scale",'.10 .10 .10');
+    console.log('cambió');
+}

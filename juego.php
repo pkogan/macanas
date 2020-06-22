@@ -14,17 +14,17 @@
         </div>
         <div>Cuenta</div>
         <div id="tabla" style="display: inline;position: absolute;top: 10px;color:white; z-index: 50">
-            <?php foreach (explode(',',$_GET['jugadores']) as $jugador){
-                echo $jugador;
-            }
-?>
+          <?php foreach (explode(',',$_GET['jugadores']) as $jugador){
+              echo $jugador;
+          }
+          ?>
         </div>
         
         <button style="display: inline;position: absolute;top: 0px;color:red" class="button" id="btn1" onclick="cambiar()">Cambio Modelo</button>
     <a-scene embedded arjs>
         
         <a-marker  preset="hiro">
-            <a-entity markerhandler id="entidad"
+            <a-entity markercorrecto id="entidad"
                 position="0 0 0"
                 rotation="-50 0 0"
                 scale="0.5 0.5 0.5"
@@ -67,12 +67,5 @@ gltf-model="modelos/hornero.gltf"-->
 
         <a-entity camera></a-entity>
     </a-scene>
-    <script>
-        function cambiar(){
-var el = document.querySelector('#entidad');
-el.setAttribute("obj-model", 'obj:url(modelos/hornero.obj);mtl:url(modelos/hornero.mtl)');
-el.setAttribute("scale",'.10 .10 .10');
-console.log('cambió');})
-        </script>
-</body>
+    </body>
 </html>

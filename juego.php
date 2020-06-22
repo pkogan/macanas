@@ -28,7 +28,7 @@ if (isset($_GET['jugadores'])) {
       <div>Cuenta</div>
 
       
-      <button style="display: inline;position: absolute;top: 0px;color:red" class="button" id="btn1" onclick="cambiar()">Cambio Modelo</button>
+      <button style="display: inline;position: absolute;top: 0px;color:red;z-index:9999" class="button" id="btn1" onclick="cambiar()">Cambio Modelo</button>
       <a-scene embedded arjs>
         
         <a-marker markercorrecto preset="hiro">

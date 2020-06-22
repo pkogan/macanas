@@ -25,6 +25,12 @@ function cambiar(){
     var el = document.querySelector('#entidad');
     el.setAttribute(
         "obj-model",
+        'obj:url(modelos/oso.obj);mtl:url(modelos/oso.mtl)'
+    );
+    el.setAttribute("scale",'5 5 5');
+    var el = document.querySelector('#entidad2');
+    el.setAttribute(
+        "obj-model",
         'obj:url(modelos/hornero.obj);mtl:url(modelos/hornero.mtl)'
     );
     el.setAttribute("scale",'.10 .10 .10');

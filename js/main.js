@@ -1,5 +1,6 @@
 AFRAME.registerComponent('markercorrecto', {
     init: function () {
+        console.log('markercorrecto initialized');
         this.el.addEventListener('markerFound', () => {
             console.log('marker correcto found!');
             document.getElementById('tabla').innerHTML='Juan Correcto';
@@ -10,6 +11,7 @@ AFRAME.registerComponent('markercorrecto', {
 
 AFRAME.registerComponent('markerincorrecto', {
     init: function () {
+        console.log('markerincorrecto initialized');
         this.el.addEventListener('markerFound', () => {
             console.log('marker incorrecto found!');
             document.getElementById('tabla').innerHTML=

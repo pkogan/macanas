@@ -52,6 +52,78 @@
             <label class="form-check-label" for="radio-op2">Opción 2</label>
           </div>
         </div>
+        <h2>Modelo correcto</h2>
+        <div class="form-group">
+          <p>URL Modelo:</p>
+          <div class="form-check">
+            <input class="form-check-input data" type="radio"
+                   name="model"
+                   id="radio-preset"
+                   checked>
+            <label class="form-check-label" for="radio-preset">
+              Usar preestablecidos.
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input data" type="radio"
+                   name="model"
+                   value="obj"
+                   id="radio-custom">
+            <label class="form-check-label" for="radio-custom">
+              Definir un modelo personalizado.
+            </label>
+          </div>
+
+        <div class="preset-url">
+          <p>Seleccione uno predefinido:</p>
+          <select class="custom-select" id="preset-name">
+            <option selected="1" value="hornero">Hornero</option>
+            <option value="carrot">Carrot (Gato)</option>
+            <option value="oso">Oso</option>
+            <option value="cara">Cara</option>
+          </select>
+        </div>
+
+        <div id="custom-url">
+
+          <div class="form-group">
+            <label for="position">Posición</label>
+            <input type="text" class="form-control data" id="model-pos"
+                   placeholder="0 0 0">
+          </div>
+          <div class="form-group">
+            <label for="position">Rotación</label>
+            <input type="text" class="form-control data" id="model-rot"
+                   placeholder="0 0 0">
+          </div>
+          <div class="form-group">
+            <label for="position">Escala</label>
+            <input type="text" class="form-control data" id="model-scale"
+                   placeholder="0 0 0">
+          </div>
+          
+          <p>URL del modelo:</p>
+          <div class="form-check">
+            <input class="form-check-input data" type="radio"
+                   name="model-type"
+                   value="gltf" id="radio-gltf" checked>
+            <label class="form-check-label" for="radio-gltf">GLTF</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input data" type="radio"
+                   name="model-type"
+                   value="obj" id="radio-obj">
+            <label class="form-check-label" for="radio-obj">OBJ + MLT</label>
+          </div>
+          <input text="text" class="form-control data" id="model-gltf"
+                 placeholder="https://incuba.fi.uncoma.edu.ar/incuba/macanas/modelos/hornero.gltf">
+          <input text="text" class="form-control data" id="model-obj"
+                 placeholder="https://incuba.fi.uncoma.edu.ar/incuba/macanas/modelos/hornero.obj">
+          <input text="text" class="form-control data" id="model-mlt"
+                 placeholder="https://incuba.fi.uncoma.edu.ar/incuba/macanas/modelos/hornero.mlt">
+        </div><!-- Custom URL -->
+        
+        </div>
       </form>
 
       <div class="form-group">

@@ -1,8 +1,10 @@
 <?php
 $jugadores = 'juan,pedro';
-if (isset($_GET['jugadores'])) {
+if (isset($_GET['jugadores']))
     $jugadores = $_GET['jugadores'];
-}
+
+$modelo=isset($_GET['modelo'])?$_GET['modelo']:'hornero.gltf';
+
 $marcadores=array();
 $marcadores[0]=['op1'=>[],'op2'=>[]]
 ?>
@@ -125,7 +127,8 @@ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$ |  $$ |$$ | $$ | $
                       position="0 0 0"
                       rotation="-50 0 0"
                       scale="0.5 0.5 0.5"
-                      obj-model="obj:url(modelos/hornero.obj);mtl:url(modelos/hornero.mtl)"
+                      <?=$_REQUEST['opc']==1?'gltf-model="modelos/'.$modelo.'"':'obj-model="obj:url(modelos/oso.obj);mtl:url(modelos/oso.mtl)"'?>
+                   
                       ></a-entity>
         </a-marker>
 
@@ -134,7 +137,7 @@ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$ |  $$ |$$ | $$ | $
                       position="0 0 0"
                       rotation="0 90 -90"
                       scale="5 5 5"
-                      obj-model="obj:url(modelos/oso.obj);mtl:url(modelos/oso.mtl)"
+                      <?=$_REQUEST['opc']!=1?'gltf-model="modelos/'.$modelo.'"':'obj-model="obj:url(modelos/oso.obj);mtl:url(modelos/oso.mtl)"'?>
 
                       ></a-entity>
         </a-marker>
@@ -144,6 +147,7 @@ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$ |  $$ |$$ | $$ | $
              position="0 0 0"
              rotation="-50 0 0"
              scale="0.5 0.5 0.5"
+        obj-model="obj:url(modelos/hornero.obj);mtl:url(modelos/hornero.mtl)"
              gltf-model="modelos/hornero.gltf"
              ></a-entity>
              </a-marker>

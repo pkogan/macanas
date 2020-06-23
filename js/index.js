@@ -18,10 +18,9 @@
   var assign_events, generate_url, get_data, update_url;
 
   generate_url = function(data) {
-    var local_url, url;
-    local_url = new URL(document.URL);
-    url = new URL(local_url.origin);
-    url.pathname = 'juego.php';
+    var url;
+    url = new URL(document.URL+'juego.php');
+    //url.pathname = 'juego.php';
     url.searchParams.set('pregunta', data.pregunta);
     url.searchParams.set('jugadores', data.jugadores);
     url.searchParams.set('op1', data.op1);

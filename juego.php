@@ -3,6 +3,8 @@ $jugadores = 'juan,pedro';
 if (isset($_GET['jugadores'])) {
     $jugadores = $_GET['jugadores'];
 }
+$marcadores=array();
+$marcadores[0]=['op1'=>[],'op2'=>[]]
 ?>
 <!DOCTYPE html>
 <meta charset="UTF-8">
@@ -113,10 +115,12 @@ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$ |  $$ |$$ | $$ | $
     <body style="margin : 0px; overflow: hidden;">
  
 
-        <button style="display: inline;position: absolute;top: 0px;color:red;z-index:9999" class="button" id="btn1" onclick="cambiar()">Cambio Modelo</button>
-    <a-scene embedded arjs>
-
-        <a-marker markercorrecto preset="hiro">
+<!--        <button style="display: inline;position: absolute;top: 0px;color:red;z-index:9999" class="button" id="btn1" onclick="cambiar()">Cambio Modelo</button>-->
+<!--    <a-scene embedded arjs>-->
+    <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+    <?php foreach (explode(',', $jugadores) as $key=>$jugador) {
+ ?>
+        <a-marker type="barcode" jugador="<?=$key?>" <?= $_REQUEST['opc']==1?'markercorrecto':'markerincorrecto'?> value="<?= ($key)*2?>">
             <a-entity id="entidad"
                       position="0 0 0"
                       rotation="-50 0 0"
@@ -125,7 +129,7 @@ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$ |  $$ |$$ | $$ | $
                       ></a-entity>
         </a-marker>
 
-        <a-marker markerincorrecto preset="kanji">
+        <a-marker type="barcode" jugador="<?=$key?>" <?= $_REQUEST['opc']==1?'markerincorrecto':'markercorrecto'?> value="<?= ($key)*2+1?>">
             <a-entity id="entidad2"
                       position="0 0 0"
                       rotation="0 90 -90"
@@ -134,7 +138,7 @@ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$ |  $$ |$$ | $$ | $
 
                       ></a-entity>
         </a-marker>
-
+    <?php }?>
         <!--        <a-marker type="pattern" url="marcadores/pattern-logozorzal3.patt">
              <a-entity id="entidad"
              position="0 0 0"
@@ -172,7 +176,7 @@ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$ |  $$ |$$ | $$ | $
                 <div id="tabla">
                     <?php
                     foreach (explode(',', $jugadores) as $key=>$jugador) {
-                        echo "<div  id='jugador".$key."' class='inicio'>".$jugador." </div>";
+                        echo "<div  id='jugador".$key."' class='inicio'><h3>".$jugador." </h3></div>";
                     }
                     ?>
                 </div>
@@ -202,7 +206,7 @@ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$ |  $$ |$$ | $$ | $
                         <p class="timeRefSeconds" data-lead-id="seconds">SEGUNDOS</p>
                     </li>
                 </ul>
-                <p><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br/> <a href="index.php">Mas info</a></p>
+                <p ><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Licencia Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a></p>
             </div>
 
         </div>
@@ -212,7 +216,8 @@ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$ |  $$ |$$ | $$ | $
     <script>
 
         // Get the video
-        var webinar = new Date(<?= $_REQUEST['fin'] ?>);
+        
+        var webinar = new Date(<?= isset($_REQUEST['fin'])?$_REQUEST['fin']:date('Y,m-1,d,h,i').'+5' ?>);
 
         var video = document.getElementById("myVideo");
 

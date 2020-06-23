@@ -3,8 +3,11 @@ AFRAME.registerComponent('markercorrecto', {
         console.log('markercorrecto initialized');
         this.el.addEventListener('markerFound', () => {
             console.log('marker correcto found!');
+            console.log(this.el.attributes['jugador'].nodeValue);
+            jugador=this.el.attributes['jugador'].nodeValue;
+            
             //document.getElementById('tabla').innerHTML='Juan Correcto';
-            document.getElementById('jugador0').className = 'correcto';
+            document.getElementById('jugador'+jugador).className = 'correcto';
         });
 
     },
@@ -15,8 +18,10 @@ AFRAME.registerComponent('markerincorrecto', {
         console.log('markerincorrecto initialized');
         this.el.addEventListener('markerFound', () => {
             console.log('marker incorrecto found!');
+            console.log(this.el.attributes['jugador'].nodeValue);
+            jugador=this.el.attributes['jugador'].nodeValue;
             //document.getElementById('tabla').innerHTML = 'Juan: <b>incorrecto</b>';
-            document.getElementById('jugador0').className = 'incorrecto';
+            document.getElementById('jugador'+jugador).className = 'incorrecto';
         });
 
     },

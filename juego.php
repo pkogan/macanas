@@ -210,7 +210,7 @@ foreach (explode(',', $jugadores) as $key => $jugador) {
 
         // Get the video
 
-        var webinar = new Date(<?= isset($_REQUEST['fin']) ? $_REQUEST['fin'] : date('Y,m-1,d,h,i') . '+5' ?>);
+        var webinar = new Date(<?= isset($_REQUEST['fin']) ? $_REQUEST['fin'] : date('Y,m-1,d,H,i') . '+5' ?>);
 
         var video = document.getElementById("myVideo");
 

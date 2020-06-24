@@ -25,9 +25,8 @@ model_presets = {
       rot: "-50 0 0",
       scale: "0.5 0.5 0.5",
       model_url: {
-        model_type: 'obj',
-        obj_url: './modelos/hornero.obj',
-        mlt_url: './modelos/hornero.mlt'
+        model_type: 'gltf',
+        gltf_url: './modelos/hornero.gltf'
       }
     }
   },
@@ -86,9 +85,9 @@ generate_model_str = function(model) {
 // @return {URL} The URL object with all the information in the GET parameter.
 export var generate_url = function(data) {
   var local_url, modeldata, modelname, url;
-  local_url = new URL(document.URL);
-  url = new URL(local_url.origin);
-  url.pathname = 'juego.php';
+  //local_url = new URL(document.URL);
+  url = new URL(document.URL+'juego.php');
+  //url.pathname = 'juego.php';
   url.searchParams.set('pregunta', data.pregunta);
   url.searchParams.set('jugadores', data.jugadores);
   url.searchParams.set('op1', data.op1);

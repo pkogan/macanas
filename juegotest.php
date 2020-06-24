@@ -1,31 +1,32 @@
 <?php
 $jugadores = 'juan,pedro';
-if (isset($_REQUEST['jugadores']))
-    $jugadores = $_REQUEST['jugadores'];
+if (isset($_GET['jugadores']))
+    $jugadores = $_GET['jugadores'];
 
-$callback = array();
-$callback[0] = 'markercorrecto';
-$callback[1] = 'markerincorrecto';
+$modelo=isset($_GET['modelo'])?$_GET['modelo']:'hornero.gltf';
 
-$marcadores = array();
-if (isset($_REQUEST['modeldata'])) {
-    $marcadores[0] = $_REQUEST['modeldata'];
-} else {
-    $marcadores[0] = 'position="0 0 0"
+$callback=array();
+$callback[0]='markercorrecto';
+$callback[1]='markerincorrecto';
+
+$marcadores=array();
+$marcadores[0]='position="0 0 0"
 rotation="-50 0 0"
 scale="0.5 0.5 0.5"
-gltf-model="modelos/hornero.gltf"';
-}
+gltf-model="modelos/'.$modelo.'"';
 
-$marcadores[1] = 'position="0 0 0"
+$marcadores[1]='position="0 0 0"
   rotation="0 90 -90"
   scale="5 5 5"
   obj-model="obj:url(modelos/oso.obj);mtl:url(modelos/oso.mtl)"';
 
-$marcadores[1] = 'position="0 0 0"
+$marcadores[1]='position="0 0 0"
     rotation="90 180 0"
     scale="0.01 0.01 0.01"
     obj-model="obj:url(modelos/sad.obj);mtl:url(modelos/sad.mtl)"';
+
+
+
 ?>
 <!DOCTYPE html>
 <meta charset="UTF-8">
@@ -53,7 +54,7 @@ $marcadores[1] = 'position="0 0 0"
             position: fixed;
             right: 0;
             bottom: 0;
-            min-width: 100%; 
+            min-width: 100%;
             min-height: 100%;
         }
 
@@ -82,15 +83,15 @@ $marcadores[1] = 'position="0 0 0"
         }
 
         /*
-                                     $$\           $$\                                   
-                                     $$ |          $$ |                                  
-$$$$$$$\  $$$$$$\  $$\   $$\ $$$$$$$\ $$$$$$\    $$$$$$$ | $$$$$$\  $$\  $$\  $$\ $$$$$$$\  
-$$  _____|$$  __$$\ $$ |  $$ |$$  __$$\\_$$  _|  $$  __$$ |$$  __$$\ $$ | $$ | $$ |$$  __$$\ 
+                                     $$\           $$\
+                                     $$ |          $$ |
+$$$$$$$\  $$$$$$\  $$\   $$\ $$$$$$$\ $$$$$$\    $$$$$$$ | $$$$$$\  $$\  $$\  $$\ $$$$$$$\
+$$  _____|$$  __$$\ $$ |  $$ |$$  __$$\\_$$  _|  $$  __$$ |$$  __$$\ $$ | $$ | $$ |$$  __$$\
 $$ /      $$ /  $$ |$$ |  $$ |$$ |  $$ | $$ |    $$ /  $$ |$$ /  $$ |$$ | $$ | $$ |$$ |  $$ |
 $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$ |  $$ |$$ | $$ | $$ |$$ |  $$ |
 \$$$$$$$\ \$$$$$$  |\$$$$$$  |$$ |  $$ | \$$$$  |\$$$$$$$ |\$$$$$$  |\$$$$$\$$$$  |$$ |  $$ |
 \_______| \______/  \______/ \__|  \__|  \____/  \_______| \______/  \_____\____/ \__|  \__|
-        */                                                                                            
+        */
         .countdown-wrap {
             text-align: center;
             margin: 10px 0 20px;
@@ -136,42 +137,38 @@ $$ |      $$ |  $$ |$$ |  $$ |$$ |  $$ | $$ |$$\ $$ |  $$ |$$ |  $$ |$$ | $$ | $
     <body style="margin : 0px; overflow: hidden;">
 
 
-        <!--        <button style="display: inline;position: absolute;top: 0px;color:red;z-index:9999" class="button" id="btn1" onclick="cambiar()">Cambio Modelo</button>-->
-        <!--    <a-scene embedded arjs>-->
+<!--        <button style="display: inline;position: absolute;top: 0px;color:red;z-index:9999" class="button" id="btn1" onclick="cambiar()">Cambio Modelo</button>-->
+<!--    <a-scene embedded arjs>-->
     <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
-<?php
-$idOpcion=$_REQUEST['opc'] == 1?0:1;
-foreach (explode(',', $jugadores) as $key => $jugador) {
-    ?>
-            <a-marker type="barcode" jugador="<?= $key ?>" <?= $callback[$idOpcion]?> value="<?= ($key) * 2 ?>">
-                <a-entity id="entidad1_<?=$key?>"
-                          <?=$marcadores[$idOpcion]?>
-                          ></a-entity>
-            </a-marker>
-        
-            <a-marker type="barcode" jugador="<?= $key ?>" <?= $callback[abs($idOpcion-1)]?> value="<?= ($key) * 2+1 ?>">
-                <a-entity id="entidad2_<?=$key?>"
-                          <?=$marcadores[abs($idOpcion-1)]?>
-                          ></a-entity>
-            </a-marker>
-<?php } ?>
+    <?php 
+    $idOpcion=$_REQUEST['opc']==1?0:1; 
+    foreach (explode(',', $jugadores) as $key=>$jugador) {
+      ?>
+        <a-marker type="barcode" jugador="<?=$key?>" <?= $callback[$idOpcion]?> value="<?= ($key)*2?>">
+            <a-entity id="entidad1j<?=$key?>"  <?=$marcadores[$idOpcion]?> ></a-entity>
+        </a-marker>
+        <a-marker type="barcode" jugador="<?=$key?>" <?= $callback[abs($idOpcion-1)]?> value="<?= ($key)*2+1?>">
+            <a-entity id="entidad2j<?=$key?>"  <?=$marcadores[abs($idOpcion-1)]?> ></a-entity>
+        </a-marker>
+    <?php }?>
 
         <a-entity camera></a-entity>
     </a-scene>
 
     <div class="content">
 
+        
 
         <div class="container" data-lead-id="section01-container">
             <div class="countdown-wrap" data-lead-id="countdown-wrap">
                 <h2 id="msj" class="count-headline" data-lead-id="countdown-headline"><?= $_REQUEST['pregunta'] ?><br/>
-                    <input type="radio"> OP1 <?= $_REQUEST['op1'] ?> </input> | <input type="radio"> OP2 <?= $_REQUEST['op2'] ?></radio></h2>
+                    <input type="radio"> OP1 <?= $_GET['op1'] ?> </input> | <input type="radio"> OP2 <?= $_GET['op2'] ?></radio></h2>
                 <div id="tabla">
-<?php
-foreach (explode(',', $jugadores) as $key => $jugador) {
-    echo "<div  id='jugador" . $key . "' class='inicio'><h3>" . $jugador . " </h3></div>";
-}
-?>
+                    <?php
+                    foreach (explode(',', $jugadores) as $key=>$jugador) {
+                        echo "<div  id='jugador".$key."' class='inicio'><h3>".$jugador." </h3></div>";
+                    }
+                    ?>
                 </div>
                 <ul class="countdown" data-lead-id="countdown">
                     <li>
@@ -210,7 +207,7 @@ foreach (explode(',', $jugadores) as $key => $jugador) {
 
         // Get the video
 
-        var webinar = new Date(<?= isset($_REQUEST['fin']) ? $_REQUEST['fin'] : date('Y,m-1,d,h,i') . '+5' ?>);
+        var webinar = new Date(<?= isset($_REQUEST['fin'])?$_REQUEST['fin']:date('Y,m-1,d,h,i').'+5' ?>);
 
         var video = document.getElementById("myVideo");
 

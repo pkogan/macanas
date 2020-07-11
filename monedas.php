@@ -4,22 +4,26 @@ $marcadores=array();
 $marcadores[0]='position="0 0 0"
 rotation="90 0 0"
 scale="2 2 2"
-src="modelos/monedas/Africa/Chad/Galileo.jpg"';
+src="modelos/monedas/Europa/Grecia/Democrito.jpg"';
+//src="modelos/monedas/Africa/Chad/Galileo.jpg"';
 
 $marcadores[1]='position="0 0 0"
   rotation="90 0 0"
   scale="2 2 2"
-  src="modelos/monedas/Africa/Chad/GalileoR.jpg"';
+  src="modelos/monedas/Europa/RepAlemania/Rosa-Luxemburg.jpg"';
+  //src="modelos/monedas/Africa/Chad/GalileoR.jpg"';
 
 $marcadores[2]='position="0 0 0"
 rotation="90 0 0"
 scale="2 2 2"
-src="modelos/monedas/Africa/Congo/Kant.jpg"';
+src="modelos/monedas/Europa/RepAlemania/Marx.jpg"';
+//src="modelos/monedas/Africa/Congo/Kant.jpg"';
 
 $marcadores[3]='position="0 0 0"
   rotation="90 0 0"
   scale="2 2 2"
-  src="modelos/monedas/Africa/Congo/KantR.jpg"';
+  src="modelos/monedas/Europa/Francia/Voltaire.jpg"';
+  //src="modelos/monedas/Africa/Congo/KantR.jpg"';
 
 $marcadores[4]='position="0 0 0"
 rotation="90 0 0"
@@ -29,7 +33,8 @@ src="modelos/monedas/Africa/RepSaharavi/Galileo.jpg"';
 $marcadores[5]='position="0 0 0"
   rotation="90 0 0"
   scale="2 2 2"
-  src="modelos/monedas/Africa/RepSaharavi/GalileoR.jpg"';
+  src="modelos/monedas/Africa/Congo/Kant.jpg"';
+ // src="modelos/monedas/Africa/RepSaharavi/GalileoR.jpg"';
 
 
 //obj-model="obj:url(modelos/oso.obj);mtl:url(modelos/oso.mtl)"';
